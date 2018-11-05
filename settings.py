@@ -55,7 +55,11 @@ LANGUAGE_CODE = 'en'
 REAL_WORLD_CURRENCY_CODE = 'USD'
 USE_POINTS = True
 
-ROOMS = []
+ROOMS = [{
+    'name':'zurich01',
+    'display_name':'Room for Zurich workshop',
+
+}]
 
 # AUTH_LEVEL:
 # this setting controls which parts of your site are freely accessible,
