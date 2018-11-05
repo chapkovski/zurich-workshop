@@ -1,0 +1,27 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Stage 1: Contribution (Period {{ player.round_number }} of
+    {{ Constants.num_rounds }})
+{% endblock %}
+
+{% block content %}
+    {% if subsession.gender %}
+        <table class="table table-striped">
+            {% for i in player.get_others_in_group %}
+                <tr>
+                    <td>Participant {{ i.id_in_group }}</td>
+                    <td>{{ i.participant.vars.gender }}</td>
+                </tr>
+            {% endfor %}
+        </table>
+    {% endif %}
+    {% formfields %}
+
+    {% next_button %}
+
+    {% include Constants.instructions_template %}
+
+
+{% endblock %}

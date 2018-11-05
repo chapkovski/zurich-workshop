@@ -1,0 +1,77 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Results  (Period {{ subsession.round_number }} of {{ Constants.num_rounds }})
+{% endblock %}
+
+{% block content %}
+
+    <div class="panel-body">
+        <table class="table table-hover table-striped table-bordered">
+            <tbody>
+            <tr>
+                <td>Your endowment:</td>
+                <td></td>
+                <td><strong>{{ Constants.endowment }}</strong></td>
+            </tr>
+            <tr>
+                <td>You contributed:</td>
+                <td> -</td>
+                <td><strong>{{ player.contribution }}</strong></td>
+            </tr>
+            <tr>
+                <td>Your earnings from the project:</td>
+                <td> +</td>
+                <td><b>{{ group.individual_share }}</b></td>
+            </tr>
+            {% if subsession.punishment %}
+                <tr>
+                    <td>Punishment you sent:</td>
+                    <td> -</td>
+                    <td><b>{{ player.punishment_sent }}</b></td>
+                </tr>
+                <tr>
+                    <td>Punishment you received:</td>
+                    <td> -</td>
+                    <td><b>{{ player.punishment_received }}</b></td>
+                </tr>
+            {% endif %}
+            <tr>
+                <td>Your payoff in this round:</td>
+                <td> =</td>
+                <td><b>{{ player.payoff }}</b></td>
+            </tr>
+            </tbody>
+            <thead class="thead-dark">
+            <tr>
+                <th>Your cumulated payoff so far:</th>
+                <th> =</th>
+                <th><b>{{ participant.payoff }}</b></th>
+            </tr>
+            </thead>
+        </table>
+    </div>
+
+    {% if player.round_number > 1 %}
+        <h5>Previous periods:</h5>
+        <table class="table table-striped table-hover">
+            <thead>
+            <th>Round</th>
+            <th>Your group average contribution</th>
+            <th>Your contribution</th>
+            </thead>
+            <tbody>
+            {% for p in player.in_previous_rounds %}
+                <tr>
+                    <td>{{ p.round_number }}</td>
+                    <td>{{ p.group.average_contribution }}</td>
+                    <td>{{ p.contribution }}</td>
+                </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+
+    {% next_button %}
+{% endblock %}
