@@ -1,5 +1,5 @@
 {% extends "global/Page.html" %}
-{% load otree %}
+{% load otree  otree_tools%}
 
 {% block title %}
     Stage 1: Contribution (Period {{ player.round_number }} of
@@ -7,6 +7,8 @@
 {% endblock %}
 
 {% block content %}
+    {% tracking_time %}
+    {% tracking_focus %}
     {% if subsession.gender %}
         <table class="table table-striped">
             {% for i in player.get_others_in_group %}
