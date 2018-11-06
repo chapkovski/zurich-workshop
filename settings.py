@@ -4,7 +4,7 @@ from os import environ
 # in SESSION_CONFIGS, except those that explicitly override it.
 # the session config can be accessed from methods in your apps as self.session.config,
 # e.g. self.session.config['participation_fee']
-EXTENSION_APPS=['otree_tools']
+EXTENSION_APPS = ['otree_tools']
 SESSION_CONFIG_DEFAULTS = {
     'real_world_currency_per_point': 1.00,
     'participation_fee': 0.00,
@@ -18,7 +18,7 @@ SESSION_CONFIGS = [
         'num_demo_participants': 3,
         'app_sequence': ['pggfg'],
         'gender': False,
-        'punishment': False,
+        'hetero': False,
     },
     {
         'name': 'pggfg_gender',
@@ -26,23 +26,23 @@ SESSION_CONFIGS = [
         'num_demo_participants': 3,
         'app_sequence': ['pggfg'],
         'gender': True,
-        'punishment': False,
+        'hetero': False,
     },
     {
         'name': 'pggfg_pun',
-        'display_name': 'Public Good Game - Punishment',
+        'display_name': 'Public Good Game - Heterogeneous',
         'num_demo_participants': 3,
         'app_sequence': ['pggfg'],
         'gender': False,
-        'punishment': True,
+        'hetero': True,
     },
     {
         'name': 'pggfg_gender_pun',
-        'display_name': 'Public Good Game - Punishment, Gender info',
+        'display_name': 'Public Good Game - Heterogeneous, Gender info',
         'num_demo_participants': 3,
         'app_sequence': ['pggfg'],
         'gender': True,
-        'punishment': True,
+        'hetero': True,
     },
 
 ]
@@ -56,8 +56,8 @@ REAL_WORLD_CURRENCY_CODE = 'USD'
 USE_POINTS = True
 
 ROOMS = [{
-    'name':'zurich01',
-    'display_name':'Room for Zurich workshop',
+    'name': 'zurich01',
+    'display_name': 'Room for Zurich workshop',
 
 }]
 

@@ -7,8 +7,7 @@
 {% endblock %}
 
 {% block content %}
-    {% tracking_time %}
-    {% tracking_focus %}
+
     {% if subsession.gender %}
         <table class="table table-striped">
             {% for i in player.get_others_in_group %}
