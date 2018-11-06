@@ -47,7 +47,10 @@ class AfterContribWP(WaitPage):
 
 
 class Results(Page):
-    ...
+    def vars_for_template(self):
+        return {'round_numbers': [g.round_number for g in self.group.in_all_rounds()],
+                'highcharts_series': {'name': 'Average contribution',
+                                      'data': [g.average_contribution for g in self.group.in_all_rounds()]}}
 
 
 class FinalResults(Page):

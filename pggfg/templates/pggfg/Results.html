@@ -78,7 +78,30 @@
             {% endfor %}
             </tbody>
         </table>
+        <h5>Chart:</h5>
+        <div id="highcharts-container" style="min-width: 310px; height: 400px; margin: 0 auto"></div>
+
+
+
     {% endif %}
 
     {% next_button %}
+{% endblock %}
+{% block scripts %}
+    <script src="//code.highcharts.com/highcharts.js"></script>
+
+    <script>
+        $(function () {
+            Highcharts.chart('highcharts-container', {
+                title: {
+                    text: 'Average contribution'
+                },
+                xAxis: {
+                    categories: {{ round_numbers|json }},
+                    title: {text: 'Round'}
+                },
+                series: [{{ highcharts_series|json }}]
+            });
+        });
+    </script>
 {% endblock %}

@@ -7,7 +7,7 @@ import random
 author = "Philip Chapkovski, chapkovski@gmail.com"
 
 doc = """
-Public Good Game with heterogeneous endowments
+Public Good Game with heterogeneous endowments and gender information re: co-members
 
 """
 
@@ -61,11 +61,8 @@ class Group(BaseGroup):
 
 
 class Player(BasePlayer):
-    endowment = models.CurrencyField(doc='initial endowment of a player')
-    gender = models.StringField(choices=Constants.GENDERCHOICES, label='What is your gender?',
+    endowment = models.CurrencyField()
+    gender = models.StringField(choices=Constants.GENDERCHOICES,
+                                label='What is your gender?',
                                 widget=widgets.RadioSelectHorizontal)
-    contribution = models.PositiveIntegerField(
-        min=0,
-        doc="""The amount contributed by the player""",
-
-    )
+    contribution = models.PositiveIntegerField()

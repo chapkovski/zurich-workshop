@@ -1,5 +1,5 @@
 {% extends "global/Page.html" %}
-{% load otree  %}
+{% load otree %}
 
 {% block title %}
     Stage 1: Contribution (Period {{ player.round_number }} of
@@ -7,17 +7,26 @@
 {% endblock %}
 
 {% block content %}
-
-    {% if subsession.gender %}
-        <table class="table table-striped">
-            {% for i in player.get_others_in_group %}
-                <tr>
-                    <td>Participant {{ i.id_in_group }}</td>
+    <table class="table table-striped">
+        <thead>
+        <th>Participant</th>
+        {% if subsession.gender %}
+            <th>Gender</th>
+        {% endif %}
+        <th>Endowment</th>
+        </thead>
+        <tbody>
+        {% for i in player.get_others_in_group %}
+            <tr>
+                <td> {{ i.id_in_group }}</td>
+                {% if subsession.gender %}
                     <td>{{ i.participant.vars.gender }}</td>
-                </tr>
-            {% endfor %}
-        </table>
-    {% endif %}
+                {% endif %}
+                <td> {{ i.endowment }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
     {% formfield player.contribution label=label %}
 
     {% next_button %}
