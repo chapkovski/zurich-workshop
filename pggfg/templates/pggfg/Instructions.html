@@ -1,22 +1,22 @@
 {% load otree %}
 
-<div class="instructions well well-lg">
-    <ul>
-        <li>
-            <p>
-                In the beginning of  each round
-                every participant in your group
-                of {{ Constants.players_per_group }}
-                receives
+<div class="card my-3">
+    <div class="card-body">
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">
+
+                In the beginning of each round every participant in your group
+                of {{ Constants.players_per_group }} receives
                 {% if subsession.hetero %} a random amount of money from
                     {{ Constants.endowment_lb }} to {{ Constants.endowment_ub }}
                 {% else %}
-                    <strong>{{ Constants.endowment|c }}</strong>{% endif %}. The group
+                    <strong>{{ Constants.endowment }}</strong>
+                {% endif %}. The group
                 has the opportunity to undertake a joint project. Each participant in
                 the group decides how much she or he is going to contribute to
                 the project.
-            </p>
-            <p>
+            </li>
+            <li class="list-group-item">
                 The earnings from the project are calculated as follows: The
                 contributions of all <strong>{{ Constants.players_per_group }}</strong> participants are
                 added up, the total contribution
@@ -25,8 +25,14 @@
                 evenly split among all <strong>{{ Constants.players_per_group }}</strong>
                 participants. Your payoff equals your earnings from the project, plus
                 the amount you did not contribute.
-            </p>
-        </li>
 
-    </ul>
+            </li>
+            <li class="list-group-item">
+                <img src="{% static 'pggfg/pgg.jpg' %}" class="img-fluid" alt="Responsive image">
+            </li>
+
+        </ul>
+    </div>
 </div>
+
+

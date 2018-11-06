@@ -28,19 +28,22 @@ class AfterGenderWP(WaitPage):
 
 
 class Contribute(Page):
+    timeout_seconds = 60
+    timeout_submission = {'contribution': 0}
     form_model = 'player'
     form_fields = ['contribution']
+
     def contribution_max(self):
         return self.player.endowment
 
     def vars_for_template(self):
-        return {'label':"How much will you contribute to the project (from 0 to {})?".format(self.player.endowment)}
+        return {'label': "How much will you contribute to the project (from 0 to {})?".
+            format(self.player.endowment)}
+
 
 class AfterContribWP(WaitPage):
     def after_all_players_arrive(self):
         self.group.set_payoffs()
-
-
 
 
 class Results(Page):

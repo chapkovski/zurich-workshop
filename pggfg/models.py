@@ -36,7 +36,8 @@ class Subsession(BaseSubsession):
         for p in self.get_players():
             if self.round_number == 1:
                 if self.hetero:
-                    p.endowment = c(random.randint(Constants.endowment_lb, Constants.endowment_ub))
+                    p.endowment = c(random.randint(Constants.endowment_lb,
+                                                   Constants.endowment_ub))
                 else:
                     p.endowment = Constants.endowment
             else:
