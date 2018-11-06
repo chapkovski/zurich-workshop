@@ -5,10 +5,34 @@ from os import environ
 # the session config can be accessed from methods in your apps as self.session.config,
 # e.g. self.session.config['participation_fee']
 EXTENSION_APPS = ['otree_tools']
+AWS_ACCESS_KEY_ID = environ.get('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = environ.get('AWS_SECRET_ACCESS_KEY')
+
+mturk_hit_settings = {
+    'keywords': ['study', 'experiment', 'academic'],
+    'title': 'Academic study',
+    'description': 'Behavioral study',
+    'frame_height': 1000,
+    'preview_template': 'global/MTurkPreview.html',
+    'minutes_allotted_per_assignment': 60,
+    'expiration_hours': 4,  # 7 days
+
+    'qualification_requirements': [
+        {
+            'QualificationTypeId': "00000000000000000071",
+            'Comparator': "EqualTo",
+            'LocaleValues': [{
+                'Country': "US",
+            }]
+        },
+    ],
+
+}
 SESSION_CONFIG_DEFAULTS = {
     'real_world_currency_per_point': 1.00,
     'participation_fee': 0.00,
     'doc': "",
+    'mturk_hit_settings':mturk_hit_settings,
 }
 
 SESSION_CONFIGS = [
