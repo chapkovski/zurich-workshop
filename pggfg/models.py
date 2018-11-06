@@ -16,7 +16,7 @@ class Constants(BaseConstants):
     name_in_url = 'pgg'
     players_per_group = 3
     num_others_per_group = players_per_group - 1
-    num_rounds = 10
+    num_rounds = 2
     instructions_template = 'pggfg/Instructions.html'
     endowment = c(20)
     endowment_lb = c(10)
