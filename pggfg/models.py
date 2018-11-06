@@ -17,7 +17,7 @@ class Constants(BaseConstants):
     name_in_url = 'pggfg'
     players_per_group = 3
     num_others_per_group = players_per_group - 1
-    num_rounds = 20
+    num_rounds = 1
     instructions_template = 'pggfg/Instructions.html'
     endowment = 20
     efficiency_factor = 1.6

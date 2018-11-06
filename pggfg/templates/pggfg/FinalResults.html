@@ -1,0 +1,36 @@
+{% extends "global/Page.html" %}
+{% load otree %}
+
+{% block title %}
+    Final Results
+{% endblock %}
+
+{% block content %}
+    <div class="alert alert-danger" role="alert">
+        <h5>Your final payoff is: <strong>{{ participant.payoff }}</strong></h5>
+    </div>
+
+
+
+
+    <h5>All periods:</h5>
+    <table class="table table-striped table-hover">
+        <thead>
+        <th>Round</th>
+        <th>Your group average contribution</th>
+        <th>Your contribution</th>
+        </thead>
+        <tbody>
+        {% for p in player.in_all_rounds %}
+            <tr>
+                <td>{{ p.round_number }}</td>
+                <td>{{ p.group.average_contribution }}</td>
+                <td>{{ p.contribution }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+    {% next_button %}
+{% endblock %}

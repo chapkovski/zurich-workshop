@@ -10,8 +10,10 @@ class Gender(Page):
 
     def is_displayed(self):
         return self.subsession.gender and self.round_number == 1
+
     def before_next_page(self):
         self.participant.vars['gender'] = self.player.gender
+
 
 class Intro(Page):
     template_name = 'pggfg/Introduction.html'
@@ -71,6 +73,11 @@ class Results(Page):
     ...
 
 
+class FinalResults(Page):
+    def is_displayed(self):
+        return self.round_number == Constants.num_rounds
+
+
 page_sequence = [
     Gender,
     Intro,
@@ -80,4 +87,5 @@ page_sequence = [
     Punishment,
     AfterPunishmentWP,
     Results,
+    FinalResults,
 ]
